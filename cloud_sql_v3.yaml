@@ -1,0 +1,13 @@
+resources:
+  - type: gcp-types/sqladmin-v1beta4:databases
+    name: supernova-db
+    properties:
+      instance: supernova-postgres-instance
+      name: supernova-db
+  - type: gcp-types/sqladmin-v1beta4:users
+    name: supernova-user
+    properties:
+      instance: supernova-postgres-instance
+      name: supernova-user
+      password: Passw0rd
+      host: '%'  # Allow connections from any host
