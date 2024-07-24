@@ -1,12 +1,15 @@
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['deployment-manager', 'deployments', 'create', 'supernova-deployment', '--config', 'cloud_sql_v1.yaml']
+  args: ['deployment-manager', 'deployments', 'create', 'supernova-deployment', '--config', 'cloud_sql_v2.yaml']
 
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'sh'
   args:
     - '-c'
     - sleep 300
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['deployment-manager', 'deployments', 'update', 'supernova-deployment', '--config', 'cloud_sql_v3.yaml']
 options:
   logging: CLOUD_LOGGING_ONLY
 
