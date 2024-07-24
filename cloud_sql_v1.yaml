@@ -1,0 +1,27 @@
+resources:
+  - type: gcp-types/sqladmin-v1beta4:instances
+    name: "supernova-postgres-instance"
+    properties:
+      databaseVersion: POSTGRES_16
+      region: europe-west2
+      settings:
+        tier: db-perf-optimized-N-2
+        diskAutoresize: true
+        diskSizeGb: 100
+      deletionProtection: false
+      ipConfiguration:
+        authorizedNetworks:
+          - name: 'default'
+            value: '0.0.0.0/0'
+  - type: gcp-types/sqladmin-v1beta4:databases
+    name: supernova-db
+    properties:
+      instance: supernova-postgres-instance
+      name: supernova-db
+  - type: gcp-types/sqladmin-v1beta4:users
+    name: supernova-user
+    properties:
+      instance: $(ref.supernova-postgres-instance.name)
+      name: supernova-user
+      password: Passw0rd
+      host: '%'  # Allow connections from any host
