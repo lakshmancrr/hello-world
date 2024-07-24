@@ -1,4 +1,18 @@
 resources:
+  - type: gcp-types/sqladmin-v1beta4:instances
+    name: "supernova-postgres-instance"
+    properties:
+      databaseVersion: POSTGRES_16
+      region: europe-west2
+      settings:
+        tier: db-perf-optimized-N-2
+        diskAutoresize: true
+        diskSizeGb: 100
+      deletionProtection: false
+      ipConfiguration:
+        authorizedNetworks:
+          - name: 'default'
+            value: '0.0.0.0/0'
   - type: gcp-types/sqladmin-v1beta4:databases
     name: supernova-db
     properties:
