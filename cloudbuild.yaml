@@ -8,6 +8,6 @@ steps:
     - '-c'
     - sleep 300
 options:
-  logging: NONE
+  logging: CLOUD_LOGGING_ONLY
 
 
