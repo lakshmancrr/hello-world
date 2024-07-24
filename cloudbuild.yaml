@@ -6,7 +6,7 @@ steps:
   entrypoint: 'sh'
   args:
     - '-c'
-    - sleep 300
+    - sleep 60
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['deployment-manager', 'deployments', 'update', 'supernova-deployment', '--config', 'cloud_sql_v3.yaml']
