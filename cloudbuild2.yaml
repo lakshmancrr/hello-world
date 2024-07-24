@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['deployment-manager', 'deployments', 'update', 'supernova-deployment', '--config', 'cloud_sql_v1.yaml']
+options:
+  logging: none
